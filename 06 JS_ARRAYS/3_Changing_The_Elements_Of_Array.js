@@ -9,3 +9,4 @@ prices[2]=95.02;
 prices[6]=1.50;
 
 console.log(prices);
+
