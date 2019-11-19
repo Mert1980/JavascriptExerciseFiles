@@ -1,8 +1,6 @@
 // REQUIREMENTS FOR VERSION 11
 // todoList.toggleAll should use forEach
 // view.displayTodos should use forEach
-
-
 let todoList = {
     todos: [],
     addTodo: function (todoText) {
@@ -24,23 +22,22 @@ let todoList = {
     toggleAll: function (){
       let totalTodos = this.todos.length;
       let completedTodos = 0;
-      for (let i=0 ; i<totalTodos ; i++){
-        if (this.todos[i].completed === true){
-          completedTodos++;
-          }
-        }
-    // Case 1:if everything is true, make everything false
+      
+      this.todos.forEach(function(todo){
+        if (todo.completed === true){
+            completedTodos++;
+            }
+      });
+      this.todos.forEach(function(todo){
+        // Case1 : If everything is true, make everything false
         if (completedTodos === totalTodos){
-          for (let i=0 ; i<totalTodos ; i++){
-            this.todos[i].completed = false;
-            }      
-    // Case 1:Otherwise, make everything true
-        } else {
-          for (let i=0 ; i<totalTodos ; i++){
-            this.todos[i].completed = true;
-            } 
+          todo.completed = false;
+        // Case2 : Otherwise, make everything true
+          } else {
+          todo.completed = true;
         }
-      }
+      });
+    }
 }
 let handler = {
   addTodo: function(){
@@ -76,10 +73,9 @@ let view = {
   displayTodos: function(){
     let todosUl = document.querySelector('ul');
     todosUl.innerHTML = '';
-
-    for (let i=0 ; i < todoList.todos.length ; i++){
+    
+    todoList.todos.forEach(function(todo, position){
       let todoLi = document.createElement('li');
-      let todo = todoList.todos[i];
       let todoTextWithCompletion = '';
 
       if(todo.completed === true){
@@ -87,12 +83,11 @@ let view = {
       } else {
         todoTextWithCompletion = '( ) ' + todo.todoText;
       }
-      
-      todoLi.id = i;
+      todoLi.id = position;
       todoLi.textContent = todoTextWithCompletion;
       todoLi.appendChild(this.createDeleteButton());
       todosUl.appendChild(todoLi);
-    }
+    }, this) // this refers to view object ==> forEach(callbak, this)
   },
   createDeleteButton: function (){
     var deleteButton = document.createElement('button');
@@ -112,5 +107,4 @@ let view = {
     });
   }
 }
-
 view.setUpEventListeners();
