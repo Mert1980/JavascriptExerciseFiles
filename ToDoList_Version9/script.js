@@ -1,7 +1,7 @@
-// REQUIREMENTS FOR VERSION 3
-// There should be an 'li' element for every todo
-// Each 'li' element should contaion .todo Text
-// Each 'li' element should show .completed
+// REQUIREMENTS FOR VERSION 9
+// 1-There should be an 'li' element for every todo
+// 2-Each 'li' element should contaion .todo Text
+// 3-Each 'li' element should show .completed
 
 let todoList = {
     todos: [],
@@ -24,6 +24,7 @@ let todoList = {
     toggleAll: function (){
       let totalTodos = this.todos.length;
       let completedTodos = 0;
+    // Get number of completed todos
       for (let i=0 ; i<totalTodos ; i++){
         if (this.todos[i].completed === true){
           completedTodos++;
@@ -78,7 +79,6 @@ let view = {
   displayTodos: function(){
     let todosUl = document.querySelector('ul');
     todosUl.innerHTML = '';
-
 
     for (let i=0 ; i < todoList.todos.length ; i++){
       let todoLi = document.createElement('li');

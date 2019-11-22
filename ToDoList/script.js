@@ -35,7 +35,6 @@ let todoList = {
       this.displayTodos();
     },
     toggleAll: function (){
-        debugger;
       let totalTodos = this.todos.length;
       let completedTodos = 0;
       for (let i=0 ; i<totalTodos ; i++){
@@ -70,5 +69,5 @@ displayTodosButton.addEventListener('click', function(){
 const toggleAllButton = document.getElementById('toggleAllButton');
 toggleAllButton.addEventListener('click', function(){
     todoList.toggleAll();
-})
+});
 
