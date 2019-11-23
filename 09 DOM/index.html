@@ -1,0 +1,29 @@
+<html>
+<body>
+  <div>Begin</div>
+
+  <ul>
+    <li>Information</li>
+  </ul>
+
+  <div>End</div>
+
+  <script>
+    // for (let i = 0; i < document.body.childNodes.length; i++) {
+    //   alert( document.body.childNodes[i] ); // Text, DIV, Text, UL, ..., SCRIPT
+    // }
+
+    // for (let node of document.body.childNodes) {
+    //     alert(node); // shows all nodes from the collection
+    // } 
+    
+    for (let elem of document.body.children) {
+      alert(elem); // DIV, UL, DIV, SCRIPT
+    }
+    
+    // alert(Array.from(document.body.childNodes).filter ); // function
+
+  </script>
+  ...more stuff...
+</body>
+</html>
