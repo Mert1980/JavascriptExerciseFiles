@@ -1,0 +1,42 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+</head>
+
+<body>
+
+  <h2><a href="https://aws.random.cat/" target="_blank">a random cat website</a></h2>
+  <p>this page also has an API to get random cat images, so use it already!</p>
+
+
+  <button id="get-random-cat">load a random cat</button>
+
+
+  <div id="cat-space"></div>
+
+
+  <script>
+    function getRandomCatHandler() {
+      // make api request
+      fetch("https://aws.random.cat/meow", { method: "GET" })
+        .then(response => response.json())
+        .then(catData => {
+          // render data to DOM
+          /*
+            do a little dom manipulation to clear the cat-space
+            and to put in the new image from catData
+          */
+        })
+        .catch(err => console.log(err))
+    }
+    document.getElementById("get-random-cat")
+      .addEventListener("click", getRandomCatHandler);
+  </script>
+
+</body>
+
+</html>
