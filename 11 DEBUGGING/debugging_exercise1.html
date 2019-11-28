@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Debugging</title>
+  </head>
+  <body>
+    <script>
+      function debugMe1() {
+        const requestURL =
+          "https://hackyourfuture.be/practice-api/food/dry/grains.json";
+
+        fetch(requestURL)
+          .then(function parseResponse(resp) {
+            return resp.json();
+          })
+          .then(function workWithData(data) {
+              debugger;
+            let filteredArray = data.varieties.filter(x => x.charAt(0) === "b");
+            let popped = filteredArray.pop(filteredArray[1]);
+            filteredArray.unshift(popped);
+            return filteredArray;
+          })
+          .then(function assertResult(result) {
+            console.assert(
+              JSON.stringify(result) === '["bulgar","barley"]',
+              'grains beginning with "b"'
+            );
+          })
+          .catch(function handleErrors(err) {
+            console.error(err);
+          });
+
+        return requestURL;
+      }
+      debugMe1();
+    </script>
+  </body>
+</html>
