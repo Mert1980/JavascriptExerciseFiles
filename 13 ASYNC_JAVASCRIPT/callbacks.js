@@ -4,13 +4,12 @@ const posts = [
 ];
 
 function getPosts() {
-  setTimeout(function() {
+  setTimeout(() => {
     let output = "";
-    posts.forEach(function(posts, index) {
+    posts.forEach((posts, index) => {
       output += `<li>${posts.title}</li>`;
     });
     document.body.innerHTML = output;
   }, 1000);
 }
-
 getPosts();
