@@ -12,4 +12,10 @@ function getPosts() {
     document.body.innerHTML = output;
   }, 1000);
 }
-getPosts();
+function createPost(post, callback) {
+  setTimeout(() => {
+    posts.push(post);
+    callback();
+  }, 2000);
+}
+createPost({ title: "Post three", post: "This is post three" }, getPosts);
