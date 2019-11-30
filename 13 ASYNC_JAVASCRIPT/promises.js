@@ -18,7 +18,7 @@ function createPost(post) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       posts.push(post);
-      const error = false;
+      const error = true;
       if (!error) {
         resolve();
       } else {
@@ -27,9 +27,9 @@ function createPost(post) {
     }, 2000);
   });
 }
-// createPost({ title: "Post three", post: "This is post three" })
-//   .then(getPosts)
-//   .catch(err => console.log(err));
+createPost({ title: "Post three", post: "This is post three" })
+  .then(getPosts)
+  .catch(err => console.log(err));
 
 // *** Async / Await ***
 
