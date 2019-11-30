@@ -29,14 +29,22 @@ function createPost(post) {
 //   .then(getPosts)
 //   .catch(err => console.log(err));
 
+// Async - Await
+
+async function init(){
+   await createPost({ title: "Post three", post: "This is post three" });
+    getPosts();
+}
+init();
+
 // Promise.all
 
-const promise1 = Promise.resolve('Hello World!');
-const promise2 = 10;
-const promise3 = new Promise((resolve, reject) =>{
-    setTimeout(resolve, 3000, 'Goodbye!');
-});
-const promise4 = fetch
-('https://jsonplaceholder.typicode.com/posts').then(res => res.json())
+// const promise1 = Promise.resolve('Hello World!');
+// const promise2 = 10;
+// const promise3 = new Promise((resolve, reject) =>{
+//     setTimeout(resolve, 3000, 'Goodbye!');
+// });
+// const promise4 = fetch
+// ('https://jsonplaceholder.typicode.com/posts').then(res => res.json())
 
-Promise.all([promise1, promise2, promise3, promise4]).then(value => console.log(value));
+// Promise.all([promise1, promise2, promise3, promise4]).then(value => console.log(value));
